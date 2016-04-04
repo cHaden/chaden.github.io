@@ -1,0 +1,45 @@
+---
+layout: post
+title:  "Using .fetch to handle nils"
+date:   2016-04-04 13:43:00 -0400
+categories: ruby stuff
+---
+
+The fetch method exists for Array and Hash methods in Ruby, and attempts to
+return a value for the given index or key. What's fun about this is that a
+second parameter can be included, which will be the default
+return value if there is no value available for a given index/key.
+
+For example,
+{% highlight ruby}
+some_hash = { :cow => "moo",
+              :sheep => "baa",
+              :turtle => ""}
+
+some_hash.fetch(:cow) #returns "moo"
+some_hash.fetch(:goat) #throws a KeyError
+some_hash.fetch(:capybara, "no idea") #returns "no idea"
+{% endhighlight %}
+
+This is more of less the same for an array,
+{% highlight ruby}
+some_array = ["one", "two", "three"]
+
+some_array.fetch(0) #returns "one"
+some_array.fetch(5) #throws an IndexError
+some_array.fetch(20, "some number") #returns "some number"
+{% endhighlight %}
+
+Using fetch means never returning nil, which is what generally happens when searching
+for an index/key with no corresponding value.
+
+{% highlight ruby %}
+another_hash = { :thing => 1, :thing_two => 2 }
+
+another_hash[:thing] #returns 1
+another_hash[:cat] #returns nil
+
+another_array = [1,2,3,4]
+another_array[0] #returns 1
+another_array[9] #returns nil
+{% endhighlight %}
