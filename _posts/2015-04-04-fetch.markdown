@@ -11,7 +11,7 @@ second parameter can be included, which will be the default
 return value if there is no value available for a given index/key.
 
 For example,
-{% highlight ruby}
+{% highlight ruby %}
 some_hash = { :cow => "moo",
               :sheep => "baa",
               :turtle => ""}
@@ -21,8 +21,8 @@ some_hash.fetch(:goat) #throws a KeyError
 some_hash.fetch(:capybara, "no idea") #returns "no idea"
 {% endhighlight %}
 
-This is more of less the same for an array,
-{% highlight ruby}
+This is more or less the same for an array,
+{% highlight ruby %}
 some_array = ["one", "two", "three"]
 
 some_array.fetch(0) #returns "one"
