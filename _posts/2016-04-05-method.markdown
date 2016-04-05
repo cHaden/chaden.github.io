@@ -1,0 +1,18 @@
+---
+layout: post
+title:  "__method__ (or, 'what method am I in right now?')"
+date:   2016-04-04 13:43:00 -0400
+categories: ruby stuff
+---
+
+My favorite little thing of the day:
+
+Using `__method__` in your Rails code will return a symbol of the current method name.
+
+Example:
+{% highlight ruby %}
+def some_method_name
+  logger.info "I'm in #{__method__} right now!"
+  #this will output "I'm in some_method_name right now!"
+end
+{% endhighlight %}
