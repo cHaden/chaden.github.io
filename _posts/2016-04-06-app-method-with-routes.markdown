@@ -1,7 +1,7 @@
 ---
 layout: post
-title:  "Using the app method in Rails console"
-date:   2016-04-06 13:43:00 -0400
+title:  "Testing routes with the app method in Rails console"
+date:   2016-04-06 12:43:00 -0400
 categories: ruby stuff
 ---
 
