@@ -15,3 +15,7 @@ namespace, and want to test a path like `admin_risky_rules_path`, try
 something like `=> "/admin/risky_rules"`, and, if your path doesn't exist, Rails console will give you an error.
 
 This works for more involved routes too, such as slugged URLs and paths that take parameters!
+
+For reference, [this blog post][blog-post] has lots of other exciting magic available with `app`:
+
+[blog-post]: https://signalvnoise.com/posts/3176-three-quick-rails-console-tips
