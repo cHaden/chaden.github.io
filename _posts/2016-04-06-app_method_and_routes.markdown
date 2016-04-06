@@ -1,0 +1,17 @@
+---
+layout: post
+title:  "Using the app method in Rails console"
+date:   2016-04-06 13:43:00 -0400
+categories: ruby stuff
+---
+
+Another favorite thing of the day:
+
+Using `app.` in the Rails console to test out routes.
+
+For example, if you add `resources :risky_rules` to your routes file in the `admin`
+namespace, and want to test a path like `admin_risky_rules_path`, try
+`app.admin_risky_rules_path` in the rails console. If it's a real working path, it will return
+something like `=> "/admin/risky_rules"`, and, if your path doesn't exist, Rails console will give you an error.
+
+This works for more involved routes too, such as slugged URLs and paths that take parameters!

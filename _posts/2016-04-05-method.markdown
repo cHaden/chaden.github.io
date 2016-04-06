@@ -1,7 +1,7 @@
 ---
 layout: post
 title:  "__method__ (or, 'what method am I in right now?')"
-date:   2016-04-04 13:43:00 -0400
+date:   2016-04-05 13:43:00 -0400
 categories: ruby stuff
 ---
 
