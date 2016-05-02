@@ -23,7 +23,7 @@ end
 {% endhighlight %}
 
 ...but, what if you want to switch based on a more involved set of rules? Maybe,
-if the value is odd, or falls within a range of values. Did you know what you can just
+if the value is odd, or falls within a range of values. Did you know that you can just
 throw a proc in there?
 
 {% highlight ruby %}
