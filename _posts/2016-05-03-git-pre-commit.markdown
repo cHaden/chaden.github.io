@@ -17,3 +17,8 @@ In your git repository, check the `.git/hooks` directory. There should be a set
 of sample files. For my purposes, I'm looking at the `pre-commit.sample` file.
 
 To start using this script, rename it to `pre-commit`.
+
+<<<<<< HEAD
+======
+
+this is a test
