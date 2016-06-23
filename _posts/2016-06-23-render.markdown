@@ -1,0 +1,88 @@
+---
+layout: post
+title:  "'render' in Rails'"
+date:   2016-06-23 11:43:00 -0400
+categories: ruby stuff
+---
+
+What is the difference between a `render` in a controller, and a `render` in a
+view? How do you pass local variables? What counts as a partial, and what doesn't?
+
+As usual in Rails, it's *super intuitive*, but the short answer is that, in the
+view layer, Rails wants to render partials, and in the controller layer, Rails
+wants to render views related to actions. (Aren't those frequently the same
+kind of file? Well, yes. Pretty much.)
+
+example: if you have two files in views, "_this_is_a_partial.html.erb" and
+"this_is_a_view.html.erb"
+
+***From a view:***
+
+this works:  
+`<%= render "this_is_a_partial" %>`
+
+this also works:  
+`<%= render partial: "this_is_a_partial" %>`
+
+this does not work-- it's looking for a file with *another* prepending underscore (__this_is_a_partial.html.erb)  
+`<%= render "_this_is_a_partial" %>`
+
+this does not work, if the partial is looking for a local variable called "stuff."
+As a weird little caveat: this *can* work if the local variable in `locals:`
+is never actually used in the partial  
+`<%= render "this_is_a_partial", locals: {stuff: "stuff"} %>`
+
+this works (in short, the partial needs to be explicitly called a partial in
+order to pass locals. Stay on your toes, though-- this works differently in
+the controller layer)  
+`<%= render partial: "this_is_a_partial", locals: {stuff: "stuff"} %>`
+
+this fails, because it is looking for a file with the prepending underscore,
+_this_is_a_view_file.html.erb  
+`<%= render "this_is_a_view_file" %>`
+
+this fails too. Explicitly calling this a partial doesn't help, because this
+file is not a partial. That underscore character is important.  
+`<%= render partial: "this_is_a_view_file" %>`
+
+this doesn't work at the view layer. Only from the controller. The view layer
+wants partials, not actions  
+`<%= render :this_is_a_view_file, locals: {stuff: "stuff"} %>`  
+`<%= render :this_is_a_partial %>`
+
+
+***From a controller:***
+
+
+this fails-- in the controller layer, `render` *doesn't* assume that you're talking about a file starting with an underscore, so it's looking for something like "this_is_a_partial.html.erb"  
+`render "this_is_a_partial"`
+
+this works  
+`render "_this_is_a_partial"`
+
+this works  
+`render "_this_is_a_partial", locals: {stuff: "stuff"}`
+
+this fails-- when you explicitly state that the file is a partial, it looks for a filename with a leading underscore, so it's looking for "__this_is_a_partial.html.erb"    
+`render partial: "_this_is_a_partial", locals: {stuff: "stuff"}`
+
+this works  
+`render partial: "this_is_a_partial", locals: {stuff: "stuff"}`
+
+this works  
+`render "this_is_a_view_file"`
+
+this works  
+`render "this_is_a_view_file", locals: {stuff: "stuff"}`
+
+this fails-- it's looking for a file named "_this_is_a_view_file.html.erb"  
+`render partial: "this_is_a_view_file", locals: {stuff: "stuff"}`
+
+this works  
+`render :this_is_a_view_file, locals: {stuff: "stuff"}`
+
+this doesn't work  
+`render :this_is_a_partial, locals: {stuff: "stuff"}`
+
+this works  
+`render :_this_is_a_partial, locals: {stuff: "stuff"}`
