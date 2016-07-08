@@ -1,8 +1,0 @@
----
-layout: post
-title:  "Whee"
-date:   2016-07-07 11:43:00 -0400
-categories: ruby stuff
----
-
-This is an update for no reason.
