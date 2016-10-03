@@ -14,7 +14,7 @@ For example, if you have a line like:
 resources :notacontroller
 {% endhighlight %}
 
-in your routes files, 'rake routes' will blithely tell you that you have all sorts
+in your routes files, `rake routes` will blithely tell you that you have all sorts
 of routes available
 
 {% highlight ruby %}
