@@ -6,6 +6,7 @@ categories: ruby stuff
 ---
 
 Let's learn about routes!
+(or possibly break them really well!)
 
 {% highlight ruby %}
   # => You can have the root of your site routed with "root"
