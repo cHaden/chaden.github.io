@@ -40,9 +40,11 @@ resource :items, module: :group
 {% endhighlight %}
 
 {% highlight ruby %}
-# another way to accomplish the same thing as above
-# resource :items, controller: "group/items"
+# another way to accomplish the same thing as above:
+resource :items, controller: "group/items"
+{% endhighlight %}
 
+{% highlight ruby %}
 # if you want to arbitrarily choose a string to add to URIs that
 # is not a namespace, use scope
 # Prefix Verb        URI Pattern                       Controller#Action
@@ -99,7 +101,7 @@ end
 # Of course, there's nothing forcing you to make your scope name arbitrary.
 # You could give it the same name
 # as your namespace, and have the namespace show up in the URI,
-#but not the helper methods (Why do you want that? I don't know. But you could!)
+# but not the helper methods (Why do you want that? I don't know. But you could!)
 # Prefix Verb          URI Pattern                 Controller#Action
 # items         POST   /group/items(.:format)      group/items#create
 # new_items     GET    /group/items/new(.:format)  group/items#new
